@@ -1,1 +1,2 @@
 DEBUG = True
+PER_PAGE = 10
