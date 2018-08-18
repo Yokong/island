@@ -8,6 +8,7 @@ class BookViewModel:
 	
 		
 class BookCollection:
+	"""书籍集合"""
 	
 	def __init__(self):
 		self.total = 0
@@ -17,7 +18,5 @@ class BookCollection:
 	def fill(self, yushuBook, keyword):
 		self.total = yushuBook.total
 		self.keyword = keyword
-		print(yushuBook.books)
-		self.books = [BookViewModel(book)
-					 for book in yushuBook.books]
+		self.books = [BookViewModel(book) for book in yushuBook.books]
 		
