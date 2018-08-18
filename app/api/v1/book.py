@@ -3,7 +3,7 @@ from flask import request
 from app.libs.redprint import Redprint
 from app.libs.yushuBook import YuShuBook
 from app.libs.tools import is_isbn_or_key
-from app.forms.book import SearchForm
+from app.forms.book import SearchForm, LikeForm
 from app.viewModels.book import BookCollection
 
 
@@ -29,3 +29,11 @@ def search():
             'total': bookCollection.total,
             'books': bookCollection.books
         }
+        
+        
+@api.route('/like')
+def like():
+    form = LikeForm()
+    if form.validate():
+        pass
+            

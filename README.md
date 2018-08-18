@@ -2,6 +2,8 @@
 
 ## 接口
 
+> 注册
+
 ```
 POST: /api/v1/user/register
 
@@ -19,6 +21,8 @@ Response:
 	}
 ```
 
+> 登录
+
 ```
 POST: /api/v1/user/login
 
@@ -34,6 +38,8 @@ Response:
 		"msg": "登录成功",
 	}
 ```
+
+> 搜索
 
 ```
 GET: /api/v1/book/search?q=9787501524044

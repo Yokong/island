@@ -22,13 +22,6 @@ class RegisterForm(Form):
 
 
 class LoginForm(Form):
-
-    email = StringField(
-        validators=[DataRequired(message='邮箱不能为空'),
-                    Length(8, 32),
-                    Email(message='请输入正确的邮箱')]
-    )
-    password = PasswordField(
-        validators=[DataRequired(message='密码不能为空'),
-                    Length(6, 32, message='请输入6~32之间的密码')]
+    code = StringField(
+        validators=[DataRequired(message='code 不能为空')]
     )

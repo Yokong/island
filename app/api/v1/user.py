@@ -1,11 +1,12 @@
 import json
 
-from flask import Blueprint, request
+from flask import Blueprint, request, current_app
 
 from app.libs.redprint import Redprint
 from app.modles.base import db
 from app.modles.user import User
 from app.forms.user import RegisterForm, LoginForm
+from app.libs.weixinAuth import WXAuth
 
 
 api = Redprint('user')
@@ -30,10 +31,10 @@ def register():
 def login():
     data = request.json
     form = LoginForm(data=data)
+    appid = current_app.config['APPID']
+    secret = current_app.config['WX_SECRET']
     if form.validate():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and user.check_password(form.password.data):
-            return {'code': 200, 'msg': '登录成功'}
-        else:
-            return {'code': 401, 'msg': '账号/密码错误'}
-    return {'code': 401, 'msg': '登录失败', 'data': form.errors}
+        code = form.code.data
+        auth = WXAuth(appid, secret, code)
+        token = auth.get_token() 
+        return token
