@@ -2,24 +2,6 @@
 
 ## 接口
 
-> 注册
-
-```
-POST: /api/v1/user/register
-
-参数：json
-	{
-		"email": "xxx@gmail.com",
-		"password": "xxxxxxxx"
-	}
-
-Response:
-	{
-		"code": 200,
-		"msg": "注册成功",
-		"data": {}
-	}
-```
 
 > 登录
 
@@ -28,14 +10,14 @@ POST: /api/v1/user/login
 
 参数: json
 	{
-		"email": "xxx@gmail.com",
-		"password": "xxxxxxxx"
+		'code': 'xxxxx'
 	}
 
 Response:
 	{
-		"code": 200,
-		"msg": "登录成功",
+		"error_code": 0,
+		"msg": "success",
+		"request": "POST xxxxxx"
 	}
 ```
 
@@ -51,8 +33,20 @@ GET: /api/v1/book/search?q=9787501524044
 Response:
 	{
 		books: [],
-		"code": 200,
-		"msg": "成功",
+		"error_code": 0,
+		"msg": "xxxxx",
 		"total": xx
+	}
+```
+
+> 喜欢
+```
+POST: /api/v1/book/like
+Headers Authorization: JWT xxxxxxxxxxxx
+
+参数:
+	{
+		"openid": jlkjklj238123123,
+		"isbn": 9891231323231231
 	}
 ```

@@ -4,6 +4,8 @@ from datetime import datetime
 from sqlalchemy import Column, SmallInteger, Integer
 from flask_sqlalchemy import SQLAlchemy as SA, BaseQuery
 
+from app.libs.exceptions import SaveDatabaseError
+
 
 class SQLAlchemy(SA):
 	@contextmanager
@@ -13,7 +15,7 @@ class SQLAlchemy(SA):
 			self.session.commit()
 		except Exception as e:
 			self.session.rollback()
-			raise e
+			raise SaveDatabaseError(msg=str(e))
 
 
 class Query(BaseQuery):

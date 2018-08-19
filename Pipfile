@@ -10,6 +10,7 @@ WTForms = "*"
 requests = "*"
 pymysql = "*"
 pyjwt = "*"
+flask-httpauth = "*"
 
 [dev-packages]
 
