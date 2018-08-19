@@ -46,9 +46,6 @@ def verify_password(account, password):
 
 def verify_jwt_token():
     authorization = request.headers.get('Authorization')
-    print('*' * 50)
-    print(authorization)
-    return True, None
     if not authorization:
         raise AuthFailed(msg='Header failed', error_code=1000)
     try:
